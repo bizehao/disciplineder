@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bzh.disciplineder.mapper.UserMapper">
+
+	<resultMap id="userinfo" type="com.bzh.disciplineder.model.User">
+		<result column="id" property="id"/>
+		<result column="username" property="username"/>
+		<result column="password" property="password"/>
+		<result column="last_password_change" property="lastPasswordChange"/>
+		<result column="role" property="authorities"/>
+		<result column="enable" property="enable"/>
+	</resultMap>
+
+	<select id="getUserByName" resultMap="userinfo">
+		SELECT
+		user.id,
+        user.username,
+        user.password,
+        user.enable,
+        user.last_password_change,
+        user.enable,
+        role.role
+        FROM
+        user INNER JOIN user_role ON user.ID = user_role.USER_ID
+        INNER JOIN role ON role.ID = user_role.ROLE_ID
+        WHERE user.username = #{username}
+	</select>
+
+	<select id="findAll" resultType="com.bzh.disciplineder.model.User">
+		select * from user
+	</select>
+
+	<select id="getUserInfoById" resultType="com.bzh.disciplineder.model.UserInfo">
+		select `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
+		user_info.USER_ID = user.ID where user.USERNAME = #{username}
+	</select>
+
+	<insert id="register">
+		INSERT INTO USER ( `USERNAME`, `PASSWORD`, `EMAIL`, `Last_PASSWORD_CHANGE`, `ENABLE` )
+		VALUE ( #{username}, #{password}, #{email}, NOW(), 1 )
+	</insert>
+
+</mapper>
