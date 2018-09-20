@@ -1,4 +1,4 @@
-package com.bzh.disciplineder.model;
+package com.bzh.disciplineder.model.request;
 
 import lombok.Data;
 

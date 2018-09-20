@@ -35,9 +35,4 @@ public class UserController {
 		UserInfo userInfo = userService.getUserInfoById(username);
 		return new ResultMap().success().message("").data(userInfo);
 	}
-
-	@GetMapping("/say")
-	public String hu(){
-		return "成功了";
-	}
 }

@@ -41,4 +41,19 @@
 		VALUE ( #{username}, #{password}, #{email}, NOW(), 1 )
 	</insert>
 
+	<update id="updateUserInfo">
+		update user_info set NAME = #{name}, HEAD_PORTRAIT = #{headPortrait}, DESCRIPT = #{descript},
+		 ADDRESS = #{address}, MOTTO = #{motto}
+		where USER_ID = (select ID from user where USERNAME = #{username})
+	</update>
+
+
+	<update id="updateUserRole">
+		update user_role set ROLE_ID = #{role} where USER_ID = (select ID from user where USERNAME = #{username})
+	</update>
+
+	<insert id="insertTest">
+		insert into test (name, age) value ( #{name}, #{age} )
+	</insert>
+
 </mapper>

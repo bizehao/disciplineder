@@ -53,10 +53,13 @@ spring:
 logging:
   level:
     com.bzh.disciplineder.mapper: debug
+    #Spring Security 相关设置
     #org.springframework:
       #security: DEBUG
-      
-#Spring Security 相关设置
+  #file: /springboot.log
+  #path: /var/log/tomcat/
+debug: false
+
 # token 请求头的名字
 token.header: X_Auth_Token
   # token 加密密钥

@@ -1,13 +1,15 @@
 package com.bzh.disciplineder.mapper;
 
-import com.bzh.disciplineder.model.RequestRegister;
+import com.bzh.disciplineder.model.request.RequestRegister;
 import com.bzh.disciplineder.model.User;
 import com.bzh.disciplineder.model.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 毕泽浩
@@ -44,4 +46,20 @@ public interface UserMapper {
 	 * @return
 	 */
 	int register(RequestRegister requestRegister);
+
+	/**
+	 * 完善用户信息
+	 * @param username
+	 * @return
+	 */
+	int updateUserInfo(String username, Map<String, String> userInfo);
+
+	/**
+	 * 更新用户权限
+	 * @param username
+	 * @return
+	 */
+	int updateUserRole(String username,int role);
+
+	int insertTest(@Param("name") String name,@Param("age") Integer age);
 }

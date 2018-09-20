@@ -1,11 +1,11 @@
 package com.bzh.disciplineder.controller;
 
-import com.bzh.disciplineder.model.RequestRegister;
+import com.bzh.disciplineder.model.request.RequestRegister;
 import com.bzh.disciplineder.model.User;
 import com.bzh.disciplineder.service.RedisService;
 import com.bzh.disciplineder.service.UserService;
 import com.bzh.disciplineder.utils.Data;
-import com.bzh.disciplineder.model.RequestLoginUser;
+import com.bzh.disciplineder.model.request.RequestLoginUser;
 import com.bzh.disciplineder.utils.ResultMap;
 import com.bzh.disciplineder.model.user.LoginDetail;
 import com.bzh.disciplineder.model.user.TokenDetail;
@@ -106,7 +106,6 @@ public class LoginController {
 	 */
 	@PostMapping("register")
 	public ResultMap register(@Valid RequestRegister requestRegister, BindingResult bindingResult) {
-		System.out.println(requestRegister);
 		StringBuilder message = new StringBuilder();
 		if (bindingResult.hasErrors()) {
 			for(FieldError fieldError : bindingResult.getFieldErrors()){
