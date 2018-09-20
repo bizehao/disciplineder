@@ -109,6 +109,7 @@ public class LoginController {
 		System.out.println(requestRegister);
 		StringBuilder message = new StringBuilder();
 		if (bindingResult.hasErrors()) {
+			//真的吗
 			for(FieldError fieldError : bindingResult.getFieldErrors()){
 				message.append(fieldError.getDefaultMessage()).append(";");
 			}
