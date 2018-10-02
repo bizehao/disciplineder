@@ -31,14 +31,37 @@
 		select * from user
 	</select>
 
-	<select id="getUserInfoById" resultType="com.bzh.disciplineder.model.UserInfo">
+	<select id="getUserInfoByName" resultType="com.bzh.disciplineder.model.UserInfo">
 		select `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
 		user_info.USER_ID = user.ID where user.USERNAME = #{username}
+	</select>
+
+	<select id="getUserInfoByIds" resultType="com.bzh.disciplineder.model.UserInfo">
+		select `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
+		user_info.USER_ID = user.ID where user.ID in
+		<foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+		#{username}
+	</select>
+
+	<select id="findAllNum" resultType="java.lang.Integer">
+		select count(*) from user
 	</select>
 
 	<insert id="register">
 		INSERT INTO USER ( `USERNAME`, `PASSWORD`, `EMAIL`, `Last_PASSWORD_CHANGE`, `ENABLE` )
 		VALUE ( #{username}, #{password}, #{email}, NOW(), 1 )
+	</insert>
+
+	<insert id="addFriends">
+		INSERT into friends (`user_id`,`friend_id`,`remark_name`,`delet_sign`,`pull_black`)
+		value (#{userId}, #{friendId}, #{remarkName}, 0, 0)
+	</insert>
+
+	<insert id="addMessage">
+		INSERT into messages (`user_id`,`sender`,`message`,`read_sign`)
+		value (#{userId}, #{sender}, #{message}, 0)
 	</insert>
 
 	<update id="updateUserInfo">
@@ -51,9 +74,5 @@
 	<update id="updateUserRole">
 		update user_role set ROLE_ID = #{role} where USER_ID = (select ID from user where USERNAME = #{username})
 	</update>
-
-	<insert id="insertTest">
-		insert into test (name, age) value ( #{name}, #{age} )
-	</insert>
 
 </mapper>

@@ -933,54 +933,184 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="236" parent="4" name="role"/>
-    <table id="237" parent="4" name="test"/>
-    <table id="238" parent="4" name="user"/>
-    <table id="239" parent="4" name="user_info"/>
-    <table id="240" parent="4" name="user_role"/>
-    <column id="241" parent="236" name="ID">
+    <table id="236" parent="4" name="friends"/>
+    <table id="237" parent="4" name="messages"/>
+    <table id="238" parent="4" name="role"/>
+    <table id="239" parent="4" name="test"/>
+    <table id="240" parent="4" name="user"/>
+    <table id="241" parent="4" name="user_info"/>
+    <table id="242" parent="4" name="user_role"/>
+    <column id="243" parent="236" name="ID">
+      <Position>1</Position>
+      <Comment>id(统计数量)</Comment>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="244" parent="236" name="USER_ID">
+      <Position>2</Position>
+      <Comment>用户id</Comment>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="245" parent="236" name="FRIEND_ID">
+      <Position>3</Position>
+      <Comment>好友id</Comment>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="246" parent="236" name="REMARK_NAME">
+      <Position>4</Position>
+      <Comment>好友备注</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="247" parent="236" name="DELET_SIGN">
+      <Position>5</Position>
+      <Comment>是否删除 0无 1删除</Comment>
+      <DataType>int(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="248" parent="236" name="PULL_BLACK">
+      <Position>6</Position>
+      <Comment>是否拉黑 0无 1拉黑</Comment>
+      <DataType>int(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="249" parent="236" name="user_id_key">
+      <ColNames>USER_ID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="250" parent="236" name="friend_id_key">
+      <ColNames>FRIEND_ID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="251" parent="236" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="252" parent="236" name="user_id_key">
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>disciplineder</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="253" parent="236" name="friend_id_key">
+      <ColNames>FRIEND_ID</ColNames>
+      <RefSchemaName>disciplineder</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="254" parent="237" name="ID">
+      <Position>1</Position>
+      <Comment>id 计数</Comment>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="255" parent="237" name="USER_ID">
+      <Position>2</Position>
+      <Comment>用户id</Comment>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="256" parent="237" name="SENDER">
+      <Position>3</Position>
+      <Comment>发送者id</Comment>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="257" parent="237" name="MESSAGE">
+      <Position>4</Position>
+      <Comment>消息</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="258" parent="237" name="READ_SIGN">
+      <Position>5</Position>
+      <Comment>0 未读  1 已读</Comment>
+      <DataType>int(64)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="259" parent="237" name="user_id">
+      <ColNames>USER_ID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="260" parent="237" name="sender_id">
+      <ColNames>SENDER</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="261" parent="237" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="262" parent="237" name="user_id">
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>disciplineder</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="263" parent="237" name="sender_id">
+      <ColNames>SENDER</ColNames>
+      <RefSchemaName>disciplineder</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="264" parent="238" name="ID">
       <Position>1</Position>
       <Comment> 角色相应 id</Comment>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="236" name="ROLE">
+    <column id="265" parent="238" name="ROLE">
       <Position>2</Position>
       <Comment>角色的名称</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="243" parent="236" name="PRIMARY">
+    <key id="266" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="244" parent="237" name="id">
+    <column id="267" parent="239" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="237" name="name">
+    <column id="268" parent="239" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="237" name="age">
+    <column id="269" parent="239" name="age">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="247" parent="237" name="PRIMARY">
+    <key id="270" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="248" parent="238" name="ID">
+    <column id="271" parent="240" name="ID">
       <Position>1</Position>
       <Comment>用户id</Comment>
       <DataType>bigint(20)|0s</DataType>
@@ -988,156 +1118,156 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="238" name="USERNAME">
+    <column id="272" parent="240" name="USERNAME">
       <Position>2</Position>
       <Comment>用户名</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="238" name="PASSWORD">
+    <column id="273" parent="240" name="PASSWORD">
       <Position>3</Position>
       <Comment>用户密码</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="238" name="EMAIL">
+    <column id="274" parent="240" name="EMAIL">
       <Position>4</Position>
       <Comment>邮箱地址</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="238" name="Last_PASSWORD_CHANGE">
+    <column id="275" parent="240" name="Last_PASSWORD_CHANGE">
       <Position>5</Position>
       <Comment>最后密码更改时间</Comment>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="238" name="ENABLE">
+    <column id="276" parent="240" name="ENABLE">
       <Position>6</Position>
       <Comment>是否启用账号  1启用 0不启用</Comment>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="254" parent="238" name="u_name">
+    <index id="277" parent="240" name="u_name">
       <Comment>用户名不能重复</Comment>
       <ColNames>USERNAME</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="255" parent="238" name="PRIMARY">
+    <key id="278" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="256" parent="238" name="u_name">
+    <key id="279" parent="240" name="u_name">
       <ColNames>USERNAME</ColNames>
       <UnderlyingIndexName>u_name</UnderlyingIndexName>
     </key>
-    <trigger id="257" parent="238" name="addUserRole">
+    <trigger id="280" parent="240" name="addUserRole">
       <SourceTextLength>161</SourceTextLength>
       <Turn>after-row</Turn>
       <Events>I</Events>
     </trigger>
-    <trigger id="258" parent="238" name="delUserRole">
+    <trigger id="281" parent="240" name="delUserRole">
       <SourceTextLength>123</SourceTextLength>
       <Turn>before-row</Turn>
       <Events>D</Events>
     </trigger>
-    <column id="259" parent="239" name="USER_ID">
+    <column id="282" parent="241" name="USER_ID">
       <Position>1</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="239" name="NAME">
+    <column id="283" parent="241" name="NAME">
       <Position>2</Position>
       <Comment>姓名</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="239" name="HEAD_PORTRAIT">
+    <column id="284" parent="241" name="HEAD_PORTRAIT">
       <Position>3</Position>
       <Comment>头像</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="239" name="DESCRIPT">
+    <column id="285" parent="241" name="DESCRIPT">
       <Position>4</Position>
       <Comment>描述</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="239" name="ADDRESS">
+    <column id="286" parent="241" name="ADDRESS">
       <Position>5</Position>
       <Comment>地址</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="239" name="MOTTO">
+    <column id="287" parent="241" name="MOTTO">
       <Position>6</Position>
       <Comment>格言</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="265" parent="239" name="USER_ID">
+    <index id="288" parent="241" name="USER_ID">
       <ColNames>USER_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="266" parent="239" name="PRIMARY">
+    <key id="289" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USER_ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="267" parent="239" name="user-info">
+    <foreign-key id="290" parent="241" name="user-info">
       <ColNames>USER_ID</ColNames>
       <RefSchemaName>disciplineder</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <column id="268" parent="240" name="ID">
+    <column id="291" parent="242" name="ID">
       <Position>1</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="240" name="USER_ID">
+    <column id="292" parent="242" name="USER_ID">
       <Position>2</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="240" name="ROLE_ID">
+    <column id="293" parent="242" name="ROLE_ID">
       <Position>3</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="271" parent="240" name="u_userid">
+    <index id="294" parent="242" name="u_userid">
       <ColNames>USER_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="272" parent="240" name="u_roleid">
+    <index id="295" parent="242" name="u_roleid">
       <ColNames>ROLE_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="273" parent="240" name="PRIMARY">
+    <key id="296" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="274" parent="240" name="u_userid">
+    <foreign-key id="297" parent="242" name="u_userid">
       <ColNames>USER_ID</ColNames>
       <RefSchemaName>disciplineder</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <foreign-key id="275" parent="240" name="u_roleid">
+    <foreign-key id="298" parent="242" name="u_roleid">
       <ColNames>ROLE_ID</ColNames>
       <RefSchemaName>disciplineder</RefSchemaName>
       <RefTableName>role</RefTableName>

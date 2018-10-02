@@ -1,6 +1,7 @@
 package com.bzh.disciplineder.model.request;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -23,10 +24,15 @@ public class RequestRegister {
 	@Size(max = 15, message = "密码最多15位")
 	private String password;
 
+	@NotEmpty(message="密码不能为空")
+	@Size(min = 6, max = 15, message = "密码最少6位")
+	@Size(max = 15, message = "密码最多15位")
+	private String againPassword;
+
 	@Email(message="邮箱的格式不正确")
 	private String email;
 
-	//@NotEmpty(message="签名不能为空")
+	//@NotEmpty(RequestMessage="签名不能为空")
 	private String name;
 
 	private String headPortrait;

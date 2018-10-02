@@ -26,7 +26,7 @@ public class ResultMap extends HashMap<String, Object> {
 	}
 
 	public ResultMap message(String message) {
-		this.put("message", message);
+		this.put("RequestMessage", message);
 		return this;
 	}
 

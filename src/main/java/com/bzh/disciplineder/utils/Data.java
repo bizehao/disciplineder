@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * @version V1.0.1
  * @Description ResultMap 里 data 栏的类
- *                  补充：作为 dto 里 ChatMessage 类的 message 类型
+ *                  补充：作为 dto 里 ChatMessage 类的 RequestMessage 类型
  * @Author liuyuequn weanyq@gmail.com
  * @Date 2017/8/8 11:11
  */

@@ -79,14 +79,14 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 			if (userDetails != null && userDetails.getToken() != null && !userDetails.getToken().equals(authToken)) {
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("application/json;charset=UTF-8");
-				response.getWriter().print("{\"code\":\"455\",\"data\":\"\",\"message\":\"账号异常,请重新登录\"}");
+				response.getWriter().print("{\"code\":\"455\",\"data\":\"\",\"RequestMessage\":\"账号异常,请重新登录\"}");
 				return;
 			}
 
 			if (userDetails != null && !userDetails.isEnabled()) {
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("application/json;charset=UTF-8");
-				response.getWriter().print("{\"code\":\"452\",\"data\":\"\",\"message\":\"账号处于黑名单\"}");
+				response.getWriter().print("{\"code\":\"452\",\"data\":\"\",\"RequestMessage\":\"账号处于黑名单\"}");
 				return;
 			}
 		}

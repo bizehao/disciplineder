@@ -1,6 +1,8 @@
 package com.bzh.disciplineder.service.serviceImpl;
 
 import com.bzh.disciplineder.mapper.UserMapper;
+import com.bzh.disciplineder.model.request.Friend;
+import com.bzh.disciplineder.model.request.RequestMessage;
 import com.bzh.disciplineder.model.request.RequestRegister;
 import com.bzh.disciplineder.model.User;
 import com.bzh.disciplineder.model.UserInfo;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,15 +50,26 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserInfo getUserInfoById(String username) {
+	public UserInfo getUserInfoByName(String username) {
 
-		return userMapper.getUserInfoById(username);
+		return userMapper.getUserInfoByName(username);
+	}
+
+	@Override
+	public List<UserInfo> getUserInfoByIds(int[] ids) {
+		return userMapper.getUserInfoByIds(ids);
 	}
 
 	@Transactional
 	@Override
 	public boolean register(RequestRegister requestRegister) {
-		int v = userMapper.register(requestRegister);
+		int v = 0;
+		try {
+			v = userMapper.register(requestRegister);
+		} catch (Exception e){
+			e.getMessage();
+			e.printStackTrace();
+		}
 		return v > 0;
 	}
 
@@ -65,6 +79,7 @@ public class UserServiceImpl implements UserService {
 		int v = userMapper.updateUserInfo(username, userInfo);
 		return v > 0;
 	}
+
 	@Transactional
 	@Override
 	public boolean updateUserRole(String username, int role) {
@@ -74,19 +89,21 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public int insertTest() {
-		log.warn("测试中");
-		int sign = 0;
-		Map<String,Integer> map = new HashMap<>();
-		map.put("zhangsan",20);
-		map.put("lisi",25);
-		map.put("wangwu",null);
-		map.put("shunliu",35);
-		map.put("aqi",35);
-		map.put("songba",35);
-		for (Map.Entry<String,Integer> entry : map.entrySet()){
-			sign+=userMapper.insertTest(entry.getKey(), entry.getValue());
-		}
-		return sign;
+	public boolean addFriends(Friend friend) {
+		int v = userMapper.addFriends(friend);
+		return v > 0;
 	}
+
+	@Transactional
+	@Override
+	public boolean addMessage(RequestMessage requestMessage) {
+		int v = userMapper.addMessage(requestMessage);
+		return v > 0;
+	}
+
+	@Override
+	public int findAllNum() {
+		return userMapper.findAllNum();
+	}
+
 }

@@ -102,11 +102,15 @@ public class LoginController {
 	 * 注册
 	 * @param requestRegister
 	 * @param bindingResult
-	 * @return
+	 * @return 0:注册失败，账户已存在 1:注册成功
 	 */
 	@PostMapping("register")
 	public ResultMap register(@Valid RequestRegister requestRegister, BindingResult bindingResult) {
+		System.out.println(requestRegister);
 		StringBuilder message = new StringBuilder();
+		if(!requestRegister.getPassword().equals(requestRegister.getAgainPassword())){
+			return new ResultMap().fail("401").message("注册失败,两次密码不一致").data(2);
+		}
 		if (bindingResult.hasErrors()) {
 			for(FieldError fieldError : bindingResult.getFieldErrors()){
 				message.append(fieldError.getDefaultMessage()).append(";");
@@ -115,9 +119,9 @@ public class LoginController {
 		}
 		boolean v = userService.register(requestRegister);
 		if(v){
-			return new ResultMap().success().message("注册成功").data(null);
+			return new ResultMap().success().message("注册成功").data(1);
 		}
-		return new ResultMap().fail("422").message("注册失败").data(null);
+		return new ResultMap().fail("422").message("注册失败").data(0);
 	}
 
 }
