@@ -9,6 +9,9 @@ import com.bzh.disciplineder.model.request.RequestLoginUser;
 import com.bzh.disciplineder.utils.ResultMap;
 import com.bzh.disciplineder.model.user.LoginDetail;
 import com.bzh.disciplineder.model.user.TokenDetail;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
@@ -22,6 +25,7 @@ import javax.validation.Valid;
  * @Author liuyuequn weanyq@gmail.com
  * @Date 2017/10/3 1:30
  */
+@Api("swaggerDemoController相关的api")
 @RestController
 @RequestMapping("user")
 public class LoginController {
@@ -45,6 +49,8 @@ public class LoginController {
 	 * @param bindingResult
 	 * @return
 	 */
+	@ApiOperation(value="用户登录", notes="")
+	@ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ResultMap login(@Valid RequestLoginUser requestLoginUser, BindingResult bindingResult) {
 		// 检查有没有输入用户名密码和格式对不对

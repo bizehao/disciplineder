@@ -1,39 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e161491-769e-41f8-856f-875a289639aa" name="Default Changelist" comment="测试是否连通">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_java_websocket_Java_WebSocket_1_3_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSocketConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/core/startuprunner/StartWebSocket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/Talk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/request/Friend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/request/RequestMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/MWebSocketService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/MessageHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/WebSocketHandlerListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d784463c-7530-4f35-bcaf-89d79389a42d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d784463c-7530-4f35-bcaf-89d79389a42d.xml" afterDir="false" />
+    <list default="true" id="6e161491-769e-41f8-856f-875a289639aa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_2_0_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebConfigurer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/disciplineder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/disciplineder.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/exceHandler/EntryPointUnauthorizedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/exceHandler/EntryPointUnauthorizedHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/exceHandler/MyAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/exceHandler/MyAccessDeniedHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/filter/AuthenticationTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/filter/AuthenticationTokenFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/request/RequestRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/request/RequestRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/service/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/utils/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/utils/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/utils/ResultMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/utils/ResultMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -87,14 +74,14 @@
     <session id="1745441070">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="33" />
+          <entry key="project.closed" value="34" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.26" value="1" />
-          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.27" value="2" />
           <entry key="project.open.time.28" value="3" />
           <entry key="project.open.time.29" value="3" />
           <entry key="project.open.time.3" value="3" />
@@ -106,47 +93,47 @@
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.54" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="38" />
+          <entry key="project.opened" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="3" />
           <entry key="HTML" value="33" />
-          <entry key="JAVA" value="7235" />
-          <entry key="PLAIN_TEXT" value="22" />
+          <entry key="JAVA" value="7306" />
+          <entry key="PLAIN_TEXT" value="32" />
           <entry key="Properties" value="3" />
           <entry key="SQL" value="11" />
-          <entry key="XML" value="859" />
+          <entry key="XML" value="861" />
           <entry key="YAML" value="239" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="127" />
+          <entry key="class" value="128" />
           <entry key="dsd" value="1" />
           <entry key="fxml" value="1" />
           <entry key="html" value="5" />
-          <entry key="java" value="389" />
+          <entry key="java" value="397" />
           <entry key="json" value="1" />
           <entry key="key" value="1" />
           <entry key="properties" value="1" />
           <entry key="sql" value="1" />
-          <entry key="xml" value="35" />
+          <entry key="xml" value="36" />
           <entry key="yml" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="127" />
+          <entry key="CLASS" value="128" />
           <entry key="HTML" value="5" />
-          <entry key="JAVA" value="389" />
+          <entry key="JAVA" value="397" />
           <entry key="JSON" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="1" />
           <entry key="Scratch" value="1" />
-          <entry key="XML" value="36" />
+          <entry key="XML" value="37" />
           <entry key="YAML" value="30" />
         </counts>
       </usages-collector>
@@ -155,10 +142,10 @@
           <entry key="class" value="3" />
           <entry key="dummy" value="11" />
           <entry key="html" value="33" />
-          <entry key="java" value="7235" />
+          <entry key="java" value="7306" />
           <entry key="properties" value="3" />
-          <entry key="txt" value="11" />
-          <entry key="xml" value="870" />
+          <entry key="txt" value="21" />
+          <entry key="xml" value="872" />
           <entry key="yml" value="239" />
         </counts>
       </usages-collector>
@@ -169,11 +156,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/MWebSocketService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
+            <state relative-caret-position="113">
               <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/Swagger2Config.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSecurityConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebConfigurer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/RedisConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSocketConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -184,7 +240,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/TestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
+            <state relative-caret-position="1078">
               <caret line="62" column="40" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -223,6 +279,7 @@
       <find>HEAD_PORTRAIT</find>
       <find>dev</find>
       <find>connections</find>
+      <find>ResourceHandlerRegistry</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -240,9 +297,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/static/ss.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/SSLConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/utils/SecurityModelFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/JsonResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/core/aspect/AnnotationLog.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/exceHandler/MyAccessDeniedHandler.java" />
@@ -265,11 +319,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/logback-spring.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/DisciplinederApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/request/RequestRegister.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/MyWebSocket.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/WebSocketServer.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/core/startuprunner/StartWebSocket.java" />
@@ -277,7 +329,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/WebSocketHandlerListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/Talk.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/SpringWebSocketServer.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSocketConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/Friend.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/request/Friend.java" />
@@ -291,6 +342,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/service/serviceImpl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/TestController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/Swagger2Config.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebConfigurer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/Swagger2Config.java" />
       </list>
     </option>
   </component>
@@ -551,7 +608,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -563,6 +619,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -574,7 +631,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538449641613" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538558090073" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -585,21 +642,25 @@
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JavaDemo\disciplineder" />
+      <recent name="D:\JavaDemo\disciplineder\src\main\resources\static" />
+      <recent name="D:\JavaDemo\disciplineder\src\main\resources\templates" />
+      <recent name="D:\JavaDemo\disciplineder\src\main\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.bzh.disciplineder" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.bzh.disciplineder" />
+      <recent name="com.bzh.disciplineder.controller" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JavaDemo\disciplineder\src\main\java\com\bzh\disciplineder\model" />
       <recent name="D:\JavaDemo\disciplineder\src\main\resources\static" />
       <recent name="D:\JavaDemo\disciplineder\src\main\java\com\bzh\disciplineder\core" />
       <recent name="D:\JavaDemo\disciplineder\src\main\resources" />
       <recent name="D:\JavaDemo\disciplineder\src\main\java\com\bzh\disciplineder\service\serviceImpl" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.bzh.disciplineder.controller" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\JavaDemo\disciplineder" />
-      <recent name="D:\JavaDemo\disciplineder\src\main\resources\static" />
-      <recent name="D:\JavaDemo\disciplineder\src\main\resources\templates" />
-      <recent name="D:\JavaDemo\disciplineder\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -728,7 +789,8 @@
       <workItem from="1538199075447" duration="598000" />
       <workItem from="1538358356270" duration="1222000" />
       <workItem from="1538376075828" duration="6362000" />
-      <workItem from="1538435624911" duration="3415000" />
+      <workItem from="1538435624911" duration="4078000" />
+      <workItem from="1538555851745" duration="2107000" />
     </task>
     <task id="LOCAL-00001" summary="测试是否连通">
       <created>1537407850904</created>
@@ -744,14 +806,22 @@
       <option name="project" value="LOCAL" />
       <updated>1537407959688</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="测试完成">
+      <created>1538450154785</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1538450154786</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168026000" />
+    <option name="totallyTimeSpent" value="170796000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.5010352" side_tool="true" weight="0.30898124" />
       <window_info id="JRebel" order="1" side_tool="true" />
@@ -761,10 +831,10 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.49896482" visible="true" weight="0.18766756" />
+      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.49896482" visible="true" weight="0.19034852" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.5694051" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.39518413" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -800,44 +870,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="测试是否连通" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试是否连通" />
+    <MESSAGE value="测试完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试完成" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/RedisConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/model/request/RequestRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/5.0.8.RELEASE/spring-beans-5.0.8.RELEASE.jar!/org/springframework/beans/factory/InitializingBean.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/5.0.8.RELEASE/spring-beans-5.0.8.RELEASE.jar!/org/springframework/beans/factory/SmartInitializingSingleton.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-websocket/5.0.8.RELEASE/spring-websocket-5.0.8.RELEASE.jar!/org/springframework/web/socket/server/standard/ServerEndpointExporter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1298">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/dsd">
       <provider selected="true" editor-type-id="text-editor">
@@ -855,13 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1006,20 +1035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="50" column="24" selection-start-line="47" selection-start-column="8" selection-end-line="50" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSocketConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/core/startuprunner/StartWebSocket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
@@ -1053,13 +1068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2305">
-          <caret line="123" column="67" selection-start-line="123" selection-start-column="67" selection-end-line="123" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -1102,10 +1110,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1826">
           <caret line="104" column="25" selection-start-line="104" selection-start-column="15" selection-end-line="104" selection-end-column="25" />
-          <folding>
-            <element signature="e#2643#2644#0" expanded="true" />
-            <element signature="e#2680#2681#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1133,9 +1137,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/MWebSocketService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/TestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
+        <state relative-caret-position="1078">
           <caret line="62" column="40" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1143,10 +1157,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/webSocket/MWebSocketService.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+        <state relative-caret-position="154">
+          <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/RedisConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSocketConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.8.RELEASE/spring-webmvc-5.0.8.RELEASE.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurationSupport.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/Swagger2Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/WebConfigurer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bzh/disciplineder/config/Swagger2Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

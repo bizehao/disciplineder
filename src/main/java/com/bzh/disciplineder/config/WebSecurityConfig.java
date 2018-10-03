@@ -52,6 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
+				.antMatchers("/swagger-ui.html").permitAll()
 				.antMatchers("/websocket").permitAll()
 				.antMatchers("/index.html").permitAll()//允许通过
 				.antMatchers("/test/*").permitAll()//允许通过
@@ -85,4 +86,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// 禁用缓存
 		http.headers().cacheControl();
 	}
+
+
 }
