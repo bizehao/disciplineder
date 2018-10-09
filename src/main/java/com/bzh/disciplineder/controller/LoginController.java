@@ -11,12 +11,14 @@ import com.bzh.disciplineder.model.user.LoginDetail;
 import com.bzh.disciplineder.model.user.TokenDetail;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 
 /**
@@ -25,7 +27,8 @@ import javax.validation.Valid;
  * @Author liuyuequn weanyq@gmail.com
  * @Date 2017/10/3 1:30
  */
-@Api("swaggerDemoController相关的api")
+
+@Api(tags = {"用户登录注册注销接口"}, description = "LoginController")
 @RestController
 @RequestMapping("user")
 public class LoginController {
@@ -45,18 +48,22 @@ public class LoginController {
 
 	/**
 	 * 登录
+	 *
 	 * @param requestLoginUser
 	 * @param bindingResult
 	 * @return
 	 */
-	@ApiOperation(value="用户登录", notes="")
-	@ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
+	@ApiOperation(value = "登录")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "password", value = "用户密码", required = true, dataType = "String", paramType = "query")
+	})
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ResultMap login(@Valid RequestLoginUser requestLoginUser, BindingResult bindingResult) {
 		// 检查有没有输入用户名密码和格式对不对
 		StringBuilder message = new StringBuilder();
 		if (bindingResult.hasErrors()) {
-			for(FieldError fieldError : bindingResult.getFieldErrors()){
+			for (FieldError fieldError : bindingResult.getFieldErrors()) {
 				message.append(fieldError.getDefaultMessage()).append(";");
 			}
 			return new ResultMap().fail("400").message(message.toString()).data(null);
@@ -95,9 +102,14 @@ public class LoginController {
 
 	/**
 	 * 注销
+	 *
 	 * @param username
 	 * @return
 	 */
+	@ApiOperation(value = "注销")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "query"),
+	})
 	@GetMapping("login-out")
 	public ResultMap getMessage(String username) {
 		redisService.remove(username);
@@ -106,25 +118,38 @@ public class LoginController {
 
 	/**
 	 * 注册
+	 *
 	 * @param requestRegister
 	 * @param bindingResult
 	 * @return 0:注册失败，账户已存在 1:注册成功
 	 */
+	@ApiOperation(value = "注册")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "password", value = "用户密码", required = true, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "againPassword", value = "再次输入密码", required = true, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "email", value = "邮箱地址", required = true, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "name", value = "签名", required = false, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "headPortrait", value = "上传头像(暂未实现，先不用)", required = false, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "descript", value = "个人描述", required = false, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "address", value = "地址", required = false, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "motto", value = "座右铭", required = false, dataType = "String", paramType = "query"),
+	})
 	@PostMapping("register")
 	public ResultMap register(@Valid RequestRegister requestRegister, BindingResult bindingResult) {
 		System.out.println(requestRegister);
 		StringBuilder message = new StringBuilder();
-		if(!requestRegister.getPassword().equals(requestRegister.getAgainPassword())){
+		if (!requestRegister.getPassword().equals(requestRegister.getAgainPassword())) {
 			return new ResultMap().fail("401").message("注册失败,两次密码不一致").data(2);
 		}
 		if (bindingResult.hasErrors()) {
-			for(FieldError fieldError : bindingResult.getFieldErrors()){
+			for (FieldError fieldError : bindingResult.getFieldErrors()) {
 				message.append(fieldError.getDefaultMessage()).append(";");
 			}
 			return new ResultMap().fail("400").message(message.toString()).data(null);
 		}
 		boolean v = userService.register(requestRegister);
-		if(v){
+		if (v) {
 			return new ResultMap().success().message("注册成功").data(1);
 		}
 		return new ResultMap().fail("422").message("注册失败").data(0);

@@ -1,11 +1,13 @@
 package com.bzh.disciplineder.service;
 
+import com.bzh.disciplineder.model.FriendsInfo;
 import com.bzh.disciplineder.model.request.Friend;
 import com.bzh.disciplineder.model.request.RequestMessage;
 import com.bzh.disciplineder.model.request.RequestRegister;
 import com.bzh.disciplineder.model.UserInfo;
 import com.bzh.disciplineder.model.user.LoginDetail;
 import com.bzh.disciplineder.model.user.TokenDetail;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,9 @@ public interface UserService {
 	UserInfo getUserInfoByName(String username);
 
 	//获取用户其余资料 单个人 用户名
+	List<UserInfo> getUserInfosByName(String username);
+
+	//获取用户其余资料 单个人 用户名
 	List<UserInfo> getUserInfoByIds(int[] ids);
 
 	//注册
@@ -39,12 +44,17 @@ public interface UserService {
 	boolean updateUserRole(String username,int role);
 
 	//添加好友
-	boolean addFriends(Friend friend);
+	//0:添加失败 1:添加成功 2:该好友已存在
+	Integer addFriends(Friend friend);
 
 	//发送消息
 	boolean addMessage(RequestMessage requestMessage);
 
 	//获取所有用户数量
 	int findAllNum();
+
+	//好友列表，查询好友
+	List<FriendsInfo> selectFriendByUsername(String username);
+
 
 }

@@ -9,7 +9,7 @@ import lombok.Data;
  */
 @Data
 public class Friend {
-	private int userId;
-	private int friendId;
+	private String username;
+	private String friendName;
 	private String remarkName;
 }

@@ -1,6 +1,7 @@
 package com.bzh.disciplineder.service.serviceImpl;
 
 import com.bzh.disciplineder.mapper.UserMapper;
+import com.bzh.disciplineder.model.FriendsInfo;
 import com.bzh.disciplineder.model.request.Friend;
 import com.bzh.disciplineder.model.request.RequestMessage;
 import com.bzh.disciplineder.model.request.RequestRegister;
@@ -56,6 +57,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public List<UserInfo> getUserInfosByName(String username) {
+		username = "%"+username+"%";
+		return userMapper.getUserInfosByName(username);
+	}
+
+	@Override
 	public List<UserInfo> getUserInfoByIds(int[] ids) {
 		return userMapper.getUserInfoByIds(ids);
 	}
@@ -66,7 +73,7 @@ public class UserServiceImpl implements UserService {
 		int v = 0;
 		try {
 			v = userMapper.register(requestRegister);
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.getMessage();
 			e.printStackTrace();
 		}
@@ -89,9 +96,21 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public boolean addFriends(Friend friend) {
-		int v = userMapper.addFriends(friend);
-		return v > 0;
+	public Integer addFriends(Friend friend) {
+		String username = friend.getUsername();
+		String friendName = friend.getFriendName();
+		String remarkName = friend.getRemarkName();
+		if (remarkName == null || remarkName.equals("")) {
+			remarkName = friendName;
+		}
+		int userId = userMapper.getIdByUserName(username);
+		int friendId = userMapper.getIdByUserName(friendName);
+		int isExit = userMapper.isExitFriend(userId,friendId);
+		if(isExit == 0){
+			return userMapper.addFriends(userId, friendId, remarkName);
+		}else {
+			return 2;
+		}
 	}
 
 	@Transactional
@@ -104,6 +123,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int findAllNum() {
 		return userMapper.findAllNum();
+	}
+
+	@Override
+	public List<FriendsInfo> selectFriendByUsername(String username) {
+		return userMapper.selectFriendByUsername(username);
 	}
 
 }

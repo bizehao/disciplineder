@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -52,8 +53,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
+				// swagger start
 				.antMatchers("/swagger-ui.html").permitAll()
-				.antMatchers("/websocket").permitAll()
+				.antMatchers("/swagger-resources/**").permitAll()
+				.antMatchers("/images/**").permitAll()
+				.antMatchers("/webjars/**").permitAll()
+				.antMatchers("/v2/api-docs").permitAll()
+				.antMatchers("/configuration/ui").permitAll()
+				.antMatchers("/configuration/security").permitAll()
+				// swagger end
+				//静态资源文件
+				//.antMatchers(new String[]{"/js/**", "/css/**", "/img/**", "/images/**", "/fonts/**", "/**/favicon.ico"}).permitAll()//
 				.antMatchers("/index.html").permitAll()//允许通过
 				.antMatchers("/test/*").permitAll()//允许通过
 				.antMatchers("/user/login").permitAll()//允许通过
@@ -87,5 +97,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.headers().cacheControl();
 	}
 
+	/*@Override
+	public void configure(WebSecurity web) throws Exception {
+		//解决静态资源被拦截的问题
+		web.ignoring().antMatchers("/webjars/**");
+	}*/
 
 }

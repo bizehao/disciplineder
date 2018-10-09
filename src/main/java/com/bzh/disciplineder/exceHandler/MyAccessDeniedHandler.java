@@ -21,7 +21,7 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
 		//返回json形式的错误信息
 		httpServletResponse.setCharacterEncoding("UTF-8");
 		httpServletResponse.setContentType("application/json");
-
+		System.out.println("小弟弟，你没有权限访问呀！");
 		httpServletResponse.getWriter().println("{\"code\":403,\"RequestMessage\":\"小弟弟，你没有权限访问呀！\",\"data\":null}");
 		httpServletResponse.getWriter().flush();
 	}
