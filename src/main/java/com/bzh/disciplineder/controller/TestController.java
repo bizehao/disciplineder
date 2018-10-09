@@ -3,6 +3,7 @@ package com.bzh.disciplineder.controller;
 import com.bzh.disciplineder.service.RedisService;
 import com.bzh.disciplineder.service.UserService;
 import com.bzh.disciplineder.webSocket.MWebSocketService;
+import com.sun.deploy.net.HttpResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.java_websocket.WebSocket;
 import org.java_websocket.server.WebSocketServer;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,7 +26,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("test")
 public class TestController {
-	//做测试，看是否成功了
+	//我试一试
 	private final UserService userService;
 
 	private final MWebSocketService mWebSocketService;
@@ -52,6 +54,9 @@ public class TestController {
 
 	*/
 
+
+
+
 	/**
 	 * 指定会话ID发消息
 	 *
@@ -59,10 +64,11 @@ public class TestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/sendOne", method = RequestMethod.GET)
-	String sendOneMessage(String message) { //@RequestParam(required = true) String RequestMessage, @RequestParam(required = true) String id
+	String sendOneMessage(HttpResponse as, String message) { //@RequestParam(required = true) String RequestMessage, @RequestParam(required = true) String id
 		Map<String, WebSocket> map = mWebSocketService.getWebSocketMap();
 		System.out.println(map.size());
 		mWebSocketService.sendToAll(message);
+
 		return "ok";
 	}
 
