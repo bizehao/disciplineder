@@ -37,12 +37,11 @@
 	</select>
 
 	<select id="getUserInfoByIds" resultType="com.bzh.disciplineder.model.UserInfo">
-		select `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
+		select `USERNAME`,`NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
 		user_info.USER_ID = user.ID where user.ID in
 		<foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
 			#{id}
 		</foreach>
-		#{username}
 	</select>
 
 	<select id="findAllNum" resultType="java.lang.Integer">

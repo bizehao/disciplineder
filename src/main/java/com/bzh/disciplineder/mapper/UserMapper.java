@@ -63,7 +63,7 @@ public interface UserMapper {
 	List<UserInfo> getUserInfosByName(@Param("username") String username);
 
 	/**
-	 * 获取用户其余资料信息
+	 * 推荐好友,根据id获取用户
 	 *
 	 * @param ids
 	 * @return

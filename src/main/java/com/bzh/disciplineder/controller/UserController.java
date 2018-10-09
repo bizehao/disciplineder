@@ -72,6 +72,7 @@ public class UserController {
 
 	/**
 	 * 添加好友
+	 *
 	 * @param friend
 	 * @return
 	 */
@@ -84,41 +85,48 @@ public class UserController {
 	@PostMapping("/addFriend")
 	public ResultMap addFriend(Friend friend) {
 		int sign = userService.addFriends(friend);
-		if(sign == 1){
+		if (sign == 1) {
 			return new ResultMap().success().message("添加成功").data(true);
-		}else if(sign == 2) {
+		} else if (sign == 2) {
 			return new ResultMap().success().message("添加失败，该好友已添加").data(false);
-		}else {
+		} else {
 			return new ResultMap().success().message("添加失败").data(false);
 		}
 	}
 
 	/**
 	 * 推荐好友
+	 *
 	 * @return
 	 */
 	@ApiOperation(value = "推荐好友")
 	@GetMapping("/recommendFriend")
-	public ResultMap recommendFriends() {
+	public ResultMap recommendFriends(String username) {
 		int num = userService.findAllNum();
 		Random random = new Random();
 		int[] ids = new int[5];
-		for(int i=0; i<ids.length; i++){
+		for (int i = 0; i < ids.length; i++) {
 			ids[i] = random.nextInt(num);
 		}
-		List<UserInfo> users =  userService.getUserInfoByIds(ids);
-		return new ResultMap().success().message("添加成功").data(users);
+		List<UserInfo> users = userService.getUserInfoByIds(ids);
+		for (int i = 0; i < users.size(); i++) {
+			if(users.get(i).getUsername().equals(username)){
+				users.remove(users.get(i));
+			}
+		}
+		return new ResultMap().success().message("推荐好友成功").data(users);
 	}
 
 	/**
 	 * 查询好友，好友列表
+	 *
 	 * @return
 	 */
 	@ApiOperation(value = "显示好友信息(所有)")
 	@ApiImplicitParam(name = "username", value = "当前用户", required = true, dataType = "String", paramType = "query")
 	@GetMapping("/getFriends")
 	public ResultMap getFriends(@RequestParam("username") String username) {
-		List<FriendsInfo> users =  userService.selectFriendByUsername(username);
+		List<FriendsInfo> users = userService.selectFriendByUsername(username);
 		return new ResultMap().success().message("查询成功").data(users);
 	}
 
