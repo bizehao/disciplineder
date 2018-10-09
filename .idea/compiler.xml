@@ -9,8 +9,5 @@
         <module name="disciplineder" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="disciplineder" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
