@@ -25,13 +25,13 @@ public interface UserService {
 	//得到token
 	String generateToken(TokenDetail tokenDetail);
 
-	//获取用户其余资料 单个人 用户名
+	//根据指定用户名查询
 	UserInfo getUserInfoByName(String username);
 
-	//获取用户其余资料 单个人 用户名
+	//根据用户名模糊查询
 	List<UserInfo> getUserInfosByName(String username);
 
-	//获取用户其余资料 单个人 用户名
+	//随机获取用户
 	List<UserInfo> getUserInfoByIds(int[] ids);
 
 	//注册
