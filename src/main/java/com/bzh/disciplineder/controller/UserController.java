@@ -114,7 +114,7 @@ public class UserController {
 				users.remove(users.get(i));
 			}
 		}
-		return new ResultMap().success().message("推荐好友成功").data(users);
+		return new ResultMap().success().message("推荐好友成功了吗").data(users);
 	}
 
 	/**
