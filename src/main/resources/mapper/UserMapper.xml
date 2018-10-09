@@ -3,16 +3,16 @@
 
 <mapper namespace="com.bzh.disciplineder.mapper.UserMapper">
 
-	<resultMap id="userinfo" type="com.bzh.disciplineder.model.User">
-		<result column="id" property="id"/>
-		<result column="username" property="username"/>
-		<result column="password" property="password"/>
-		<result column="last_password_change" property="lastPasswordChange"/>
-		<result column="role" property="authorities"/>
-		<result column="enable" property="enable"/>
-	</resultMap>
+    <resultMap id="userinfo" type="com.bzh.disciplineder.model.User">
+        <result column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="last_password_change" property="lastPasswordChange"/>
+        <result column="role" property="authorities"/>
+        <result column="enable" property="enable"/>
+    </resultMap>
 
-	<select id="getUserByName" resultMap="userinfo">
+    <select id="getUserByName" resultMap="userinfo">
 		SELECT
 		user.id,
         user.username,
@@ -27,71 +27,67 @@
         WHERE user.username = #{username}
 	</select>
 
-	<select id="findAll" resultType="com.bzh.disciplineder.model.User">
+    <select id="findAll" resultType="com.bzh.disciplineder.model.User">
 		select * from user
 	</select>
 
-	<select id="getUserInfoByName" resultType="com.bzh.disciplineder.model.UserInfo">
+    <select id="getUserInfoByName" resultType="com.bzh.disciplineder.model.UserInfo">
 		select `USERNAME`, `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
 		user_info.USER_ID = user.ID where user.USERNAME = #{username}
 	</select>
 
-	<select id="getUserInfoByIds" resultType="com.bzh.disciplineder.model.UserInfo">
-		select `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
-		user_info.USER_ID = user.ID where user.ID in
-		<foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
-			#{id}
-		</foreach>
-		#{username}
-	</select>
+    <select id="getUserInfoByIds" resultType="com.bzh.disciplineder.model.UserInfo">
+        select `USERNAME`,`NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
+        user_info.USER_ID = user.ID ORDER BY  RAND() LIMIT 5
+    </select>
 
-	<select id="findAllNum" resultType="java.lang.Integer">
+    <select id="findAllNum" resultType="java.lang.Integer">
 		select count(*) from user
 	</select>
 
-	<select id="getIdByUserName" resultType="java.lang.Integer">
+    <select id="getIdByUserName" resultType="java.lang.Integer">
 		select ID from user where USERNAME = #{username}
 	</select>
 
-	<select id="getUserInfosByName" resultType="com.bzh.disciplineder.model.UserInfo">
+    <select id="getUserInfosByName" resultType="com.bzh.disciplineder.model.UserInfo">
 		select `USERNAME`, `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
 		user_info.USER_ID = user.ID where user.USERNAME like #{username}
 	</select>
 
-	<select id="isExitFriend" resultType="java.lang.Integer">
+    <select id="isExitFriend" resultType="java.lang.Integer">
 		select count(*) from friends where USER_ID = #{userId} and FRIEND_ID =#{friendId}
 	</select>
 
-	<select id="selectFriendByUsername" resultType="com.bzh.disciplineder.model.FriendsInfo">
+    <select id="selectFriendByUsername" resultType="com.bzh.disciplineder.model.FriendsInfo">
 		select `USERNAME`, `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO`, `REMARK_NAME` from
 		(select FRIEND_ID, REMARK_NAME from friends inner join user on user.ID = friends.USER_ID  where user.USERNAME = #{username} ) a inner join
 		(select `USER_ID`, `USERNAME`, `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
 		user_info.USER_ID = user.ID) b on a.FRIEND_ID = b.USER_ID;
 	</select>
 
-	<insert id="register">
+    <insert id="register">
 		INSERT INTO USER ( `USERNAME`, `PASSWORD`, `EMAIL`, `Last_PASSWORD_CHANGE`, `ENABLE` )
 		VALUE ( #{username}, #{password}, #{email}, NOW(), 1 )
 	</insert>
 
-	<insert id="addFriends">
+    <insert id="addFriends">
 		INSERT into friends (`user_id`,`friend_id`,`remark_name`,`delet_sign`,`pull_black`)
 		value (#{userId}, #{friendId}, #{remarkName}, 0, 0)
 	</insert>
 
-	<insert id="addMessage">
+    <insert id="addMessage">
 		INSERT into messages (`user_id`,`sender`,`message`,`read_sign`)
 		value (#{userId}, #{sender}, #{message}, 0)
 	</insert>
 
-	<update id="updateUserInfo">
+    <update id="updateUserInfo">
 		update user_info set NAME = #{name}, HEAD_PORTRAIT = #{headPortrait}, DESCRIPT = #{descript},
 		 ADDRESS = #{address}, MOTTO = #{motto}
 		where USER_ID = (select ID from user where USERNAME = #{username})
 	</update>
 
 
-	<update id="updateUserRole">
+    <update id="updateUserRole">
 		update user_role set ROLE_ID = #{role} where USER_ID = (select ID from user where USERNAME = #{username})
 	</update>
 
