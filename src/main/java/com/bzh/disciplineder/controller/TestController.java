@@ -24,7 +24,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("test")
 public class TestController {
-
+	//做测试，看是否成功了
 	private final UserService userService;
 
 	private final MWebSocketService mWebSocketService;
@@ -56,7 +56,6 @@ public class TestController {
 	 * 指定会话ID发消息
 	 *
 	 * @param message 消息内容
-	 * @param id      连接会话ID
 	 * @return
 	 */
 	@RequestMapping(value = "/sendOne", method = RequestMethod.GET)
