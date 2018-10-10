@@ -9,6 +9,11 @@ import com.bzh.disciplineder.model.user.LoginDetail;
 import com.bzh.disciplineder.model.user.TokenDetail;
 import org.apache.ibatis.annotations.Param;
 
+import javax.servlet.ServletOutputStream;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -56,5 +61,6 @@ public interface UserService {
 	//好友列表，查询好友
 	List<FriendsInfo> selectFriendByUsername(String username);
 
-
+	//上传/修改头像
+	void Uploadpictures(InputStream bis , String userName) throws IOException;
 }

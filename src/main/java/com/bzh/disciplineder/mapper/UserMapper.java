@@ -134,4 +134,13 @@ public interface UserMapper {
 	 */
 	List<FriendsInfo> selectFriendByUsername(@Param("username") String username);
 
+	/***
+	 *
+	 * @param imgurl  头像地址
+	 * @param username  用户名
+	 * @return   状态 1为成功0为失败
+	 */
+	int Uploadpictures(@Param("imgurl") String imgurl,@Param("username") String username);
+
+
 }
