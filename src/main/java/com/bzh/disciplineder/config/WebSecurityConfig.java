@@ -65,9 +65,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				//静态资源文件
 				//.antMatchers(new String[]{"/js/**", "/css/**", "/img/**", "/images/**", "/fonts/**", "/**/favicon.ico"}).permitAll()//
 				.antMatchers("/index.html").permitAll()//允许通过
-				.antMatchers("/user/uploadPng").permitAll()//允许通过 图片上传
-				.antMatchers("/user/uploadPngs").permitAll()//允许通过 图片上传
+				.antMatchers("/disciplineder/*").permitAll()//允许通过 图片上传
+				.antMatchers("/user/*").permitAll()//允许通过 图片上传
 				.antMatchers("/test/*").permitAll()//允许通过
+				.antMatchers("/img/*").permitAll()//允许通过
 				.antMatchers("/user/login").permitAll()//允许通过
 				.antMatchers("/user/login-out").permitAll()//允许通过
 				.antMatchers("/user/register").permitAll()//允许通过

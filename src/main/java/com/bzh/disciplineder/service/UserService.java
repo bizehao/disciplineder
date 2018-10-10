@@ -5,9 +5,11 @@ import com.bzh.disciplineder.model.request.Friend;
 import com.bzh.disciplineder.model.request.RequestMessage;
 import com.bzh.disciplineder.model.request.RequestRegister;
 import com.bzh.disciplineder.model.UserInfo;
+import com.bzh.disciplineder.model.response.resFriendsInfo;
 import com.bzh.disciplineder.model.user.LoginDetail;
 import com.bzh.disciplineder.model.user.TokenDetail;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import java.io.BufferedInputStream;
@@ -59,8 +61,11 @@ public interface UserService {
 	int findAllNum();
 
 	//好友列表，查询好友
-	List<FriendsInfo> selectFriendByUsername(String username);
+	List<resFriendsInfo> selectFriendByUsername(String username);
 
 	//上传/修改头像
-	int uploadpicture(String username, byte[] picture);
+	int uploadpicture(String username, MultipartFile File);
+
+	//获取头像
+	byte[] getloadPng(String username);
 }

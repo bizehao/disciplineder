@@ -64,6 +64,14 @@
 		(select `USER_ID`, `USERNAME`, `NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
 		user_info.USER_ID = user.ID) b on a.FRIEND_ID = b.USER_ID;
 	</select>
+	<select id="getloadPng" resultType="java.lang.String">
+		select `HEAD_PORTRAIT` from user_info inner join user on
+		user_info.USER_ID = user.ID where user.USERNAME = #{username}
+	</select>
+	<select id="getloadPngAll" resultType="java.lang.String">
+		select REMARK_NAME from friends where friends.USER_ID=(select id from user where `user`.USERNAME=#{username})
+
+	</select>
 
 	<insert id="register">
 		INSERT INTO USER ( `USERNAME`, `PASSWORD`, `EMAIL`, `Last_PASSWORD_CHANGE`, `ENABLE` )

@@ -4,6 +4,7 @@ import com.bzh.disciplineder.model.FriendsInfo;
 import com.bzh.disciplineder.model.User;
 import com.bzh.disciplineder.model.UserInfo;
 import com.bzh.disciplineder.model.request.Friend;
+import com.bzh.disciplineder.model.response.resFriendsInfo;
 import com.bzh.disciplineder.service.UserService;
 import com.bzh.disciplineder.utils.ResultMap;
 import io.swagger.annotations.Api;
@@ -18,10 +19,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.io.InputStream;
+import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channel;
 import java.nio.charset.StandardCharsets;
@@ -139,19 +142,31 @@ public class UserController {
 	@ApiImplicitParam(name = "username", value = "当前用户", required = true, dataType = "String", paramType = "query")
 	@GetMapping("/getFriends")
 	public ResultMap getFriends(@RequestParam("username") String username) {
-		List<FriendsInfo> users = userService.selectFriendByUsername(username);
+		List<resFriendsInfo> users = userService.selectFriendByUsername(username);
 		return new ResultMap().success().message("查询成功").data(users);
-	}
 
+
+	}
+    @ApiOperation(value = "上传/修改头像")
 	@PostMapping("uploadPng")
-	public ResultMap shangchuan(String username, MultipartFile headPortrait) throws IOException {
-		byte[] picture = headPortrait.getBytes();
-		int as = userService.uploadpicture(username,picture);
+	public ResultMap shangchuan(String username, MultipartFile headPortrait) {
+		int as = userService.uploadpicture(username,headPortrait);
 		if(as > 0){
 			return new ResultMap().success().message("上传成功").data(true);
 		}else {
 			return new ResultMap().success().message("上传失败").data(false);
 		}
 	}
-
+    @ApiOperation(value = "获取单个头像")
+	@GetMapping("getloadPng")
+   public void getloadPng(String username,HttpServletResponse response){
+	   try {
+		   OutputStream out = response.getOutputStream();
+		   response.setHeader("content-disposition", "attachment;filename="+URLEncoder.encode("","UTF-8"));
+		   byte[] dedao = userService.getloadPng(username);
+		  out.write(dedao);
+	   } catch (IOException e) {
+		   e.printStackTrace();
+	   }
+   }
 }
