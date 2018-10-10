@@ -90,5 +90,8 @@
     <update id="updateUserRole">
 		update user_role set ROLE_ID = #{role} where USER_ID = (select ID from user where USERNAME = #{username})
 	</update>
+	<update id="Uploadpictures">
+    UPDATE user_info SET HEAD_PORTRAIT=#{imgurl} where user_info.USER_ID=(select id FROM `user` where `user`.USERNAME=#{username})
+	</update>
 
 </mapper>
