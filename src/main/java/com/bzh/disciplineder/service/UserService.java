@@ -46,7 +46,7 @@ public interface UserService {
 	boolean updateUserInfo(String username, Map<String, String> userInfo);
 
 	//更改用户角色权利
-	boolean updateUserRole(String username,int role);
+	boolean updateUserRole(String username, int role);
 
 	//添加好友
 	//0:添加失败 1:添加成功 2:该好友已存在
@@ -62,5 +62,5 @@ public interface UserService {
 	List<FriendsInfo> selectFriendByUsername(String username);
 
 	//上传/修改头像
-	void Uploadpictures(InputStream bis , String userName) throws IOException;
+	int uploadpicture(String username, byte[] picture);
 }

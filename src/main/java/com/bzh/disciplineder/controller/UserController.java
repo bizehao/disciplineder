@@ -13,10 +13,23 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import sun.misc.BASE64Encoder;
 
+import javax.servlet.http.HttpServletRequest;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.Channel;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 import java.util.Random;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * @author 毕泽浩
@@ -110,7 +123,7 @@ public class UserController {
 		}
 		List<UserInfo> users = userService.getUserInfoByIds(ids);
 		for (int i = 0; i < users.size(); i++) {
-			if(users.get(i).getUsername().equals(username)){
+			if (users.get(i).getUsername().equals(username)) {
 				users.remove(users.get(i));
 			}
 		}
@@ -128,6 +141,17 @@ public class UserController {
 	public ResultMap getFriends(@RequestParam("username") String username) {
 		List<FriendsInfo> users = userService.selectFriendByUsername(username);
 		return new ResultMap().success().message("查询成功").data(users);
+	}
+
+	@PostMapping("uploadPng")
+	public ResultMap shangchuan(String username, MultipartFile headPortrait) throws IOException {
+		byte[] picture = headPortrait.getBytes();
+		int as = userService.uploadpicture(username,picture);
+		if(as > 0){
+			return new ResultMap().success().message("上传成功").data(true);
+		}else {
+			return new ResultMap().success().message("上传失败").data(false);
+		}
 	}
 
 }

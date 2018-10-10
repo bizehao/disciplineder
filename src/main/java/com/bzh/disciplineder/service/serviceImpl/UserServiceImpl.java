@@ -16,9 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * @author 毕泽浩
@@ -58,7 +60,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserInfo> getUserInfosByName(String username) {
-		username = "%"+username+"%";
+		username = "%" + username + "%";
 		return userMapper.getUserInfosByName(username);
 	}
 
@@ -105,10 +107,10 @@ public class UserServiceImpl implements UserService {
 		}
 		int userId = userMapper.getIdByUserName(username);
 		int friendId = userMapper.getIdByUserName(friendName);
-		int isExit = userMapper.isExitFriend(userId,friendId);
-		if(isExit == 0){
+		int isExit = userMapper.isExitFriend(userId, friendId);
+		if (isExit == 0) {
 			return userMapper.addFriends(userId, friendId, remarkName);
-		}else {
+		} else {
 			return 2;
 		}
 	}
@@ -128,6 +130,30 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<FriendsInfo> selectFriendByUsername(String username) {
 		return userMapper.selectFriendByUsername(username);
+	}
+
+	@Override
+	public int uploadpicture(String username, byte[] picture) {
+		try {
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			GZIPOutputStream gzip = new GZIPOutputStream(bos);
+			gzip.write(picture);
+			gzip.finish();
+			byte[] bytes = bos.toByteArray();
+			gzip.close();
+			bos.close();
+			//编码
+			Base64.Encoder encoder = Base64.getEncoder();
+			String pic = encoder.encodeToString(bytes).trim();
+			return userMapper.uploadpicture(username, pic);
+			//解码
+			//Base64.Decoder decoder = Base64.getDecoder();
+			/*byte[] sd = decoder.decode(nn);
+			System.out.println(Arrays.toString(sd));*/
+		} catch (IOException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 }
