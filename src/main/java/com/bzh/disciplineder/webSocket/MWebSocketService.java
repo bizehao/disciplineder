@@ -44,7 +44,7 @@ public class MWebSocketService extends WebSocketServer {
 
 	@Override
 	public void onStart() {
-		System.out.println("开始执行");
+		System.out.println("开始执行WebSocket");
 		gson = new GsonBuilder().create();
 	}
 
@@ -67,7 +67,8 @@ public class MWebSocketService extends WebSocketServer {
 
 	@Override
 	public void onMessage(WebSocket webSocket, String s) {
-		Talk talk = gson.fromJson(s, Talk.class);
+		System.out.println(s);
+		/*Talk talk = gson.fromJson(s, Talk.class);
 		switch (talk.getCode()) {
 			case "100": //首次连接
 				System.out.println(talk.getSender()+"连接成功");
@@ -76,7 +77,7 @@ public class MWebSocketService extends WebSocketServer {
 			case "200": //聊天
 				messageHandler.start(talk,this);
 				break;
-		}
+		}*/
 	}
 
 	private static void print(String msg) {

@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author 毕泽浩
- * @Description:
+ * @Description: 拦截器
  * @time 2018/10/3 17:06
  */
 @Configuration
@@ -23,5 +23,8 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
 
 		registry.addResourceHandler("/webjars/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/");
+
+		registry.addResourceHandler("/index.html")
+				.addResourceLocations("classpath:/static/index.html");
 	}
 }

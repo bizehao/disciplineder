@@ -41,18 +41,13 @@ public class TestController {
 	 * 群发消息内容
 	 * @param RequestMessage
 	 * @return
-	 *//*
+	 * */
 	@RequestMapping(value="/sendAll", method=RequestMethod.GET)
 	String sendAllMessage(@RequestParam(required=true) String RequestMessage){
-		try {
-			WebSocketServer.BroadCastInfo(RequestMessage);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		mWebSocketService.sendToAll(RequestMessage);
 		return "ok";
 	}
 
-	*/
 
 
 
