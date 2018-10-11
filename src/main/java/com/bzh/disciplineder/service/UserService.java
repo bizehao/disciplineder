@@ -39,7 +39,7 @@ public interface UserService {
 	List<UserInfo> getUserInfosByName(String username);
 
 	//随机获取用户
-	List<UserInfo> getUserInfoByIds(int[] ids);
+	List<UserInfo> recommendFriends();
 
 	//注册
 	boolean register(RequestRegister requestRegister);

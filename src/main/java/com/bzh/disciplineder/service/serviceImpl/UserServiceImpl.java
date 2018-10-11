@@ -64,18 +64,26 @@ public class UserServiceImpl implements UserService {
 	public UserInfo getUserInfoByName(String username) {
 		UserInfo userInfo = userMapper.getUserInfoByName(username);
 		userInfo.setHeadportrait(CommonUtils.imgtobyte(userInfo.getHeadportrait()));
-		return userMapper.getUserInfoByName(username);
+		return userInfo;
 	}
 
 	@Override
 	public List<UserInfo> getUserInfosByName(String username) {
 		username = "%" + username + "%";
-		return userMapper.getUserInfosByName(username);
+		List<UserInfo> list = userMapper.getUserInfosByName(username);
+		for (UserInfo userInfo : list){
+			userInfo.setHeadportrait(CommonUtils.imgtobyte(userInfo.getHeadportrait()));
+		}
+		return list;
 	}
 
 	@Override
-	public List<UserInfo> getUserInfoByIds(int[] ids) {
-		return userMapper.getUserInfoByIds(ids);
+	public List<UserInfo> recommendFriends() {
+		List<UserInfo> list = userMapper.recommendFriends();
+		for (UserInfo userInfo : list){
+			userInfo.setHeadportrait(CommonUtils.imgtobyte(userInfo.getHeadportrait()));
+		}
+		return list;
 	}
 
 	@Transactional

@@ -65,10 +65,9 @@ public interface UserMapper {
     /**
      * 推荐好友,根据id获取用户
      *
-     * @param ids
      * @return
      */
-    List<UserInfo> getUserInfoByIds(@Param("ids") int[] ids);
+    List<UserInfo> recommendFriends();
 
     /**
      * 注册

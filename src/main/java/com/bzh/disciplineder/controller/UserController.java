@@ -118,13 +118,13 @@ public class UserController {
 	@ApiOperation(value = "推荐好友")
 	@GetMapping("/recommendFriend")
 	public ResultMap recommendFriends(String username) {
-		int num = userService.findAllNum();
+		/*int num = userService.findAllNum();
 		Random random = new Random();
 		int[] ids = new int[5];
 		for (int i = 0; i < ids.length; i++) {
 			ids[i] = random.nextInt(num);
-		}
-		List<UserInfo> users = userService.getUserInfoByIds(ids);
+		}*/
+		List<UserInfo> users = userService.recommendFriends();
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getUsername().equals(username)) {
 				users.remove(users.get(i));

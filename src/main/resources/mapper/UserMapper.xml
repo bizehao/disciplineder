@@ -36,7 +36,7 @@
 		user_info.USER_ID = user.ID where user.USERNAME = #{username}
 	</select>
 
-	<select id="getUserInfoByIds" resultType="com.bzh.disciplineder.model.UserInfo">
+	<select id="recommendFriends" resultType="com.bzh.disciplineder.model.UserInfo">
         select `USERNAME`,`NAME`,`HEAD_PORTRAIT`,`DESCRIPT`,`ADDRESS`,`MOTTO` from user_info inner join user on
         user_info.USER_ID = user.ID ORDER BY  RAND() LIMIT 5
     </select>
