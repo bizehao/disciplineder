@@ -61,11 +61,11 @@ public interface UserService {
 	int findAllNum();
 
 	//好友列表，查询好友
-	List<resFriendsInfo> selectFriendByUsername(String username);
+	List<FriendsInfo> selectFriendByUsername(String username);
 
 	//上传/修改头像
 	int uploadpicture(String username, MultipartFile File);
 
 	//获取头像
-	byte[] getloadPng(String username);
+	String getloadPng(String username);
 }

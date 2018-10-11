@@ -138,11 +138,11 @@ public class UserController {
 	 *
 	 * @return
 	 */
-	@ApiOperation(value = "显示好友信息(所有)")
+	@ApiOperation(value = "获取所有好友信息(所有)")
 	@ApiImplicitParam(name = "username", value = "当前用户", required = true, dataType = "String", paramType = "query")
 	@GetMapping("/getFriends")
 	public ResultMap getFriends(@RequestParam("username") String username) {
-		List<resFriendsInfo> users = userService.selectFriendByUsername(username);
+		List<FriendsInfo> users = userService.selectFriendByUsername(username);
 		return new ResultMap().success().message("查询成功").data(users);
 
 
@@ -163,8 +163,8 @@ public class UserController {
 	   try {
 		   OutputStream out = response.getOutputStream();
 		   response.setHeader("content-disposition", "attachment;filename="+URLEncoder.encode("","UTF-8"));
-		   byte[] dedao = userService.getloadPng(username);
-		  out.write(dedao);
+		   String dedao = userService.getloadPng(username);
+		  //out.write(dedao);
 	   } catch (IOException e) {
 		   e.printStackTrace();
 	   }
