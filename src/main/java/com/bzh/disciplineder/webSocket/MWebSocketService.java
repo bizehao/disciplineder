@@ -59,25 +59,28 @@ public class MWebSocketService extends WebSocketServer {
 	@Override
 	public void onClose(WebSocket webSocket, int i, String s, boolean b) {
 		String address = webSocket.getRemoteSocketAddress().getAddress().getHostAddress();
+		System.out.println("========================================");
 		String message = String.format("(%s) <退出房间！>", address);
-		sendToAll(message);
+		System.out.println(webSocket.isClosed());
+		//sendToAll(message);
 		System.out.println(message);
 
 	}
 
 	@Override
 	public void onMessage(WebSocket webSocket, String s) {
-		System.out.println(s);
-		/*Talk talk = gson.fromJson(s, Talk.class);
+		Talk talk = gson.fromJson(s, Talk.class);
 		switch (talk.getCode()) {
 			case "100": //首次连接
-				System.out.println(talk.getSender()+"连接成功");
 				webSocketMap.put(talk.getSender(), webSocket);
+				messageHandler.starts(talk.getSender(),this);
 				break;
 			case "200": //聊天
 				messageHandler.start(talk,this);
 				break;
-		}*/
+            case "300":
+                webSocketMap.remove(talk.getSender());
+		}
 	}
 
 	private static void print(String msg) {
@@ -107,8 +110,13 @@ public class MWebSocketService extends WebSocketServer {
 	}
 
 	//给某个用户发消息
-	public void sendToSingle(WebSocket webSocket, String message) {
-		webSocket.send(message);
+	public boolean sendToSingle(WebSocket webSocket,Talk message) {
+        String mess = gson.toJson(message);
+        if(!webSocket.isClosed()){
+		 webSocket.send(mess);
+      	return false;
+	  }
+	  webSocketMap.remove(message.getReceiver());
+	  return true;
 	}
-
 }

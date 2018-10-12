@@ -6,19 +6,20 @@ package com.bzh.disciplineder.model;
  * @time 2018/9/28 14:06
  */
 public class Talk {
+	private int id;//消息ID
 	private String code;
 	private String sender;
 	private String receiver;
-	private Data data = new Data();
-
+	private int push;//是否推送？
+	private String time;
+	private String message;
 	public Talk() {
 		setCode("200");
 		setSender("我是手机001");
 	}
 
-	static class Data {
-		private String time;
-		private String message;
+
+
 
 		public String getTime() {
 			return time;
@@ -35,8 +36,16 @@ public class Talk {
 		public void setMessage(String message) {
 			this.message = message;
 		}
+
+public int getId(){return id;}
+public void setId(int id){this.id=id;}
+	public int getPush(){
+		return push;
 	}
 
+	public void setPush(int push){
+		this.push=push;
+	}
 	public String getCode() {
 		return code;
 	}
@@ -61,22 +70,8 @@ public class Talk {
 		this.receiver = receiver;
 	}
 
-	public Data getData() {
-		return data;
-	}
-
-	public void setData(Data data) {
-		this.data = data;
-	}
 
 	//设置消息体
-	public void setMessage(String message) {
-		this.data.setMessage(message);
-	}
 
-	//获取消息体
-	public String getMessage() {
-		return this.data.getMessage();
-	}
 
 }

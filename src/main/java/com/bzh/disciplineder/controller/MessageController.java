@@ -1,34 +1,25 @@
 package com.bzh.disciplineder.controller;
 
 import com.bzh.disciplineder.model.Talk;
-import com.bzh.disciplineder.model.request.RequestMessage;
-import com.bzh.disciplineder.service.RedisService;
 import com.bzh.disciplineder.service.UserService;
 import com.bzh.disciplineder.webSocket.MWebSocketService;
 import com.bzh.disciplineder.webSocket.MessageHandler;
-import com.sun.deploy.net.HttpResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.java_websocket.WebSocket;
-import org.java_websocket.server.WebSocketServer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
-
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author 毕泽浩
+ * @author 段
  * @Description:
- * @time 2018/9/11 15:06
+ * @time 2018/10/11 16：46
  */
 @Slf4j
 @RestController
-@RequestMapping("test")
-public class TestController {
+@RequestMapping("message")
+public class MessageController {
 	//我试一试
 	private final UserService userService;
 
@@ -37,7 +28,7 @@ public class TestController {
 	private  MessageHandler MH;
 
 	@Autowired
-	public TestController(UserService userService, MWebSocketService mWebSocketService,MessageHandler MH) {
+	public MessageController(UserService userService, MWebSocketService mWebSocketService, MessageHandler MH) {
 		this.userService = userService;
 		this.mWebSocketService = mWebSocketService;
 		this.MH=MH;
@@ -62,12 +53,12 @@ public class TestController {
 	 */
 	@RequestMapping(value = "/sendOne", method = RequestMethod.POST)
 	String sendOneMessage(String sender, String receiver, String message) { //@RequestParam(required = true) String RequestMessage, @RequestParam(required = true) String id
-		return null;
-	}
-	@RequestMapping(value = "/send")
-	String sendOneMessage(String username){
-
-		return null;
+		Talk talk = new Talk();
+		talk.setSender(sender);
+		talk.setReceiver(receiver);
+		talk.setMessage(message);
+		MH.start(talk,mWebSocketService);
+		return "ok";
 	}
 
 

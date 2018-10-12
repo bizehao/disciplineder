@@ -144,8 +144,6 @@ public class UserController {
 	public ResultMap getFriends(@RequestParam("username") String username) {
 		List<FriendsInfo> users = userService.selectFriendByUsername(username);
 		return new ResultMap().success().message("查询成功").data(users);
-
-
 	}
     @ApiOperation(value = "上传/修改头像")
 	@PostMapping("uploadPng")

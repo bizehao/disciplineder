@@ -96,7 +96,7 @@ public class LoginController {
 			}
 			//处理当前用户名是否在容器中已存在 存在: 使上一个token失效 将这个添加进去 不存在: 将这个添加进去
 
-		}
+	}
 		return null;
 	}
 

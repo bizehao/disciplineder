@@ -9,13 +9,16 @@ import lombok.Data;
  */
 @Data
 public class RequestMessage {
-	private int userId;
-	private int sender;
-	private String message;
+	private String sender;//发送者ID
+	private String receiver;//接收者ID
+	private String message;//发送内容
+	private int push;//是否推送？
 
-	public RequestMessage(int userId, int sender, String message) {
-		this.userId = userId;
+	public RequestMessage(String sender, String receiver, String message,int push) {
 		this.sender = sender;
+		this.receiver = receiver;
 		this.message = message;
+		this.push=push;
 	}
+
 }

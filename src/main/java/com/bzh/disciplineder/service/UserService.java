@@ -1,6 +1,7 @@
 package com.bzh.disciplineder.service;
 
 import com.bzh.disciplineder.model.FriendsInfo;
+import com.bzh.disciplineder.model.Talk;
 import com.bzh.disciplineder.model.request.Friend;
 import com.bzh.disciplineder.model.request.RequestMessage;
 import com.bzh.disciplineder.model.request.RequestRegister;
@@ -8,7 +9,9 @@ import com.bzh.disciplineder.model.UserInfo;
 import com.bzh.disciplineder.model.response.resFriendsInfo;
 import com.bzh.disciplineder.model.user.LoginDetail;
 import com.bzh.disciplineder.model.user.TokenDetail;
+import com.bzh.disciplineder.webSocket.MWebSocketService;
 import org.apache.ibatis.annotations.Param;
+import org.java_websocket.WebSocket;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
@@ -68,4 +71,10 @@ public interface UserService {
 
 	//获取头像
 	String getloadPng(String username);
+
+	List<Talk> getmessage(String username);
+
+	int upmespush(int id);
+
+
 }

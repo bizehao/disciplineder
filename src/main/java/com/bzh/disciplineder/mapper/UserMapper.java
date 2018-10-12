@@ -1,6 +1,7 @@
 package com.bzh.disciplineder.mapper;
 
 import com.bzh.disciplineder.model.FriendsInfo;
+import com.bzh.disciplineder.model.Talk;
 import com.bzh.disciplineder.model.request.Friend;
 import com.bzh.disciplineder.model.request.RequestMessage;
 import com.bzh.disciplineder.model.request.RequestRegister;
@@ -150,5 +151,26 @@ public interface UserMapper {
      */
     String getloadPng(@Param("username") String username);
 
+    /***
+     * 获取全部头像
+     * @param username
+     * @return
+     */
     List<String> getloadPngAll(@Param("username") String username);
+
+    /***
+     * 获得用户未读消息
+     * @param username
+     * @return
+     */
+    List<Talk> getmessage(@Param("username") String username);
+
+    /***
+     * 修改消息是否推送状态
+     * @param id
+     * @return
+     */
+    int upmespush(@Param("id") int id);
+
+
 }
