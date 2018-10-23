@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="disciplineder:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/disciplineder_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="disciplineder/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="disciplineder" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

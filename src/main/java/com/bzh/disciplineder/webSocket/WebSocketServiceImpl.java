@@ -9,43 +9,37 @@ import org.java_websocket.server.WebSocketServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.*;
 
 /**
  * @author 毕泽浩
  * @Description:
  * @time 2018/9/27 16:42
  */
-public class MWebSocketService extends WebSocketServer {
+@Component
+public class WebSocketServiceImpl extends WebSocketServer implements WebSocketService {
 
 	@Autowired
-	private MessageHandler messageHandler;
+	MessageHandler messageHandler;
 
 	private static final Map<String, WebSocket> webSocketMap = new LinkedHashMap<>();
-
+	private static final Map<WebSocket, String> webSocketMapInverted = new LinkedHashMap<>(); //用户websocket的反向存储
 	private static Gson gson;
 
-	public MWebSocketService(int port) throws UnknownHostException {
-		super(new InetSocketAddress(port));
+	public WebSocketServiceImpl() throws UnknownHostException {
+		super(new InetSocketAddress(8080));
 	}
 
-	public MWebSocketService(InetSocketAddress address) {
+	public WebSocketServiceImpl(InetSocketAddress address) {
 		super(address);
 	}
 
 	@Override
 	public void onStart() {
 		System.out.println("开始执行WebSocket");
-		gson = new GsonBuilder().create();
+		gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 	}
 
 	@Override
@@ -59,32 +53,27 @@ public class MWebSocketService extends WebSocketServer {
 	@Override
 	public void onClose(WebSocket webSocket, int i, String s, boolean b) {
 		String address = webSocket.getRemoteSocketAddress().getAddress().getHostAddress();
-		System.out.println("========================================");
 		String message = String.format("(%s) <退出房间！>", address);
-		System.out.println(webSocket.isClosed());
-		//sendToAll(message);
 		System.out.println(message);
-
+		String wsKey = webSocketMapInverted.get(webSocket);
+		webSocketMap.remove(wsKey);
+		webSocketMapInverted.remove(webSocket);
 	}
 
 	@Override
 	public void onMessage(WebSocket webSocket, String s) {
+		System.out.println(s);
 		Talk talk = gson.fromJson(s, Talk.class);
 		switch (talk.getCode()) {
 			case "100": //首次连接
 				webSocketMap.put(talk.getSender(), webSocket);
-				messageHandler.starts(talk.getSender(),this);
+				webSocketMapInverted.put(webSocket, talk.getSender());
+				messageHandler.activePush(talk.getSender());
 				break;
 			case "200": //聊天
-				messageHandler.start(talk,this);
+				messageHandler.transferPush(talk);
 				break;
-            case "300":
-                webSocketMap.remove(talk.getSender());
 		}
-	}
-
-	private static void print(String msg) {
-		System.out.println(String.format("[%d] %s", System.currentTimeMillis(), msg));
 	}
 
 	@Override
@@ -95,28 +84,48 @@ public class MWebSocketService extends WebSocketServer {
 		e.printStackTrace();
 	}
 
+	//获取整个用户的websocket集合
+	@Override
 	public Map<String, WebSocket> getWebSocketMap() {
 		return webSocketMap;
 	}
 
+	//根据用户名获取用户的websocket
+	@Override
+	public WebSocket getWebSocketByUsername(String username) {
+		return webSocketMap.get(username);
+	}
+
 	//给所有用户发消息
+	@Override
 	public void sendToAll(String message) {
 		// 获取所有连接的客户端
 		Collection<WebSocket> connections = getConnections();
 		//将消息发送给每一个客户端
 		for (WebSocket client : connections) {
-			client.send(message);
+			int nameIndex = message.indexOf(":");
+			String name = message.substring(0,nameIndex);
+			Talk talk = new Talk();
+			talk.setId(UUID.randomUUID().getLeastSignificantBits());
+			talk.setCode("200");
+			talk.setSender(name);
+			talk.setReceiver("lisi");
+			talk.setMessage(message);
+			talk.setTime(new Date());
+			String msg = gson.toJson(talk,Talk.class);
+			client.send(msg);
 		}
 	}
 
 	//给某个用户发消息
-	public boolean sendToSingle(WebSocket webSocket,Talk message) {
-        String mess = gson.toJson(message);
-        if(!webSocket.isClosed()){
-		 webSocket.send(mess);
-      	return false;
-	  }
-	  webSocketMap.remove(message.getReceiver());
-	  return true;
+	@Override
+	public boolean sendToSingle(WebSocket webSocket, Talk message) {
+		String mess = gson.toJson(message);
+		if (webSocket.isOpen()) {
+			webSocket.send(mess);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

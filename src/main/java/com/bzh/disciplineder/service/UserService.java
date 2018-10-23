@@ -3,22 +3,13 @@ package com.bzh.disciplineder.service;
 import com.bzh.disciplineder.model.FriendsInfo;
 import com.bzh.disciplineder.model.Talk;
 import com.bzh.disciplineder.model.request.Friend;
-import com.bzh.disciplineder.model.request.RequestMessage;
 import com.bzh.disciplineder.model.request.RequestRegister;
 import com.bzh.disciplineder.model.UserInfo;
-import com.bzh.disciplineder.model.response.resFriendsInfo;
 import com.bzh.disciplineder.model.user.LoginDetail;
 import com.bzh.disciplineder.model.user.TokenDetail;
-import com.bzh.disciplineder.webSocket.MWebSocketService;
 import org.apache.ibatis.annotations.Param;
-import org.java_websocket.WebSocket;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletOutputStream;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -58,7 +49,7 @@ public interface UserService {
 	Integer addFriends(Friend friend);
 
 	//发送消息
-	boolean addMessage(RequestMessage requestMessage);
+	boolean addMessage(Talk talk);
 
 	//获取所有用户数量
 	int findAllNum();
@@ -72,9 +63,14 @@ public interface UserService {
 	//获取头像
 	String getloadPng(String username);
 
+	//获取未读消息
 	List<Talk> getmessage(String username);
 
-	int upmespush(int id);
+	//登陆后推送
+	int upmespush(Long id);
+
+	//删除好友
+	boolean deleteFriend(String username, String friendName);
 
 
 }

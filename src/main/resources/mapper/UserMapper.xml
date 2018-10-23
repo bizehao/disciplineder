@@ -12,6 +12,14 @@
 		<result column="enable" property="enable"/>
 	</resultMap>
 
+	<delete id="deleteFriend">
+		delete from friends
+		where
+			USER_ID = (SELECT ID FROM user WHERE USERNAME = #{username})
+		and
+			FRIEND_ID = (SELECT ID FROM user WHERE USERNAME = #friendName})
+	</delete>
+
 	<select id="getUserByName" resultMap="userinfo">
 		SELECT
 		user.id,
@@ -86,9 +94,10 @@
 		value (#{userId}, #{friendId}, #{remarkName}, 0, 0)
 	</insert>
 
-	<insert id="addMessage" >
-		INSERT into messages (`SENDER_ID`,`RECEIVER_ID`,`message`,`time`,`read_sign`,`push`)
-		values ((SELECT id from `user` where `user`.USERNAME=#{sender}),(SELECT id from `user` where `user`.USERNAME=#{receiver}), #{message},current_timestamp(),0,#{push})
+	<insert id="addMessage">
+		INSERT into messages (`ID`,`SENDER_ID`,`RECEIVER_ID`,`message`,`time`,`read_sign`,`push`)
+		values (#{id},(SELECT id from `user` where `user`.USERNAME=#{sender}),
+		(SELECT id from `user` where `user`.USERNAME=#{receiver}), #{message},current_timestamp(),0,#{push})
 	</insert>
 
 	<update id="updateUserInfo">

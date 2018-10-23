@@ -1,6 +1,7 @@
 package com.bzh.disciplineder.core.startuprunner;
 
-import com.bzh.disciplineder.webSocket.MWebSocketService;
+import com.bzh.disciplineder.webSocket.WebSocketService;
+import com.bzh.disciplineder.webSocket.WebSocketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -21,10 +22,10 @@ import java.net.UnknownHostException;
 @Order(value = 1)
 public class StartWebSocket implements ApplicationRunner {
 
-	private final MWebSocketService socketServer;
+	private final WebSocketService socketServer;
 
 	@Autowired
-	public StartWebSocket(MWebSocketService socketServer) {
+	public StartWebSocket(WebSocketService socketServer) {
 		this.socketServer = socketServer;
 	}
 

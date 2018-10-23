@@ -64,6 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// swagger end
 				//静态资源文件
 				.antMatchers(new String[]{"/js/**", "/css/**", "/img/**", "/images/**", "/fonts/**", "/**/favicon.ico"}).permitAll()//
+				.antMatchers("/message/*").permitAll()//允许通过
 				.antMatchers("/index.html").permitAll()//允许通过
 				.antMatchers("/disciplineder/*").permitAll()//允许通过 图片上传
 				.antMatchers("/user/*").permitAll()//允许通过 图片上传

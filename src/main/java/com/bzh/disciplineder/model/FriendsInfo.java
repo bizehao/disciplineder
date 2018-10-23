@@ -10,13 +10,13 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 public class FriendsInfo{
-	private String username;
-	private String name;
+	private String username; //用户名
+	private String name; //真实姓名
 	private String headportrait;
 	private String descript;
 	private String address;
 	private String motto;
-	private String remarkName; //REMARK_NAME;
+	private String remarkName; //REMARK_NAME; 备注姓名
 
 	public FriendsInfo(String username, String name, String headportrait, String descript, String address, String motto, String remarkName) {
 		this.username = username;

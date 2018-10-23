@@ -113,7 +113,7 @@ public class LoginController {
 	@GetMapping("login-out")
 	public ResultMap getMessage(String username) {
 		redisService.remove(username);
-		return new ResultMap().success().message("注销成功").data(null);
+		return new ResultMap().success().message("注销成功").data(true);
 	}
 
 	/**

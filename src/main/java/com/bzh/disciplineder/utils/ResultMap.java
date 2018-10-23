@@ -4,9 +4,7 @@ package com.bzh.disciplineder.utils;
 import java.util.HashMap;
 
 /**
- * 
  * @author wean2016
- *
  */
 public class ResultMap extends HashMap<String, Object> {
 

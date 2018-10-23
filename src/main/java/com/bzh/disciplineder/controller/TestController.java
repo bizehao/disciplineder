@@ -1,24 +1,10 @@
 package com.bzh.disciplineder.controller;
 
-import com.bzh.disciplineder.model.Talk;
-import com.bzh.disciplineder.model.request.RequestMessage;
-import com.bzh.disciplineder.service.RedisService;
 import com.bzh.disciplineder.service.UserService;
-import com.bzh.disciplineder.webSocket.MWebSocketService;
-import com.bzh.disciplineder.webSocket.MessageHandler;
-import com.sun.deploy.net.HttpResponse;
+import com.bzh.disciplineder.webSocket.WebSocketService;
 import lombok.extern.slf4j.Slf4j;
-import org.java_websocket.WebSocket;
-import org.java_websocket.server.WebSocketServer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author 毕泽浩
@@ -32,15 +18,12 @@ public class TestController {
 	//我试一试
 	private final UserService userService;
 
-	private final MWebSocketService mWebSocketService;
-
-	private  MessageHandler MH;
+	private final WebSocketService webSocketService;
 
 	@Autowired
-	public TestController(UserService userService, MWebSocketService mWebSocketService,MessageHandler MH) {
+	public TestController(UserService userService, WebSocketService webSocketService) {
 		this.userService = userService;
-		this.mWebSocketService = mWebSocketService;
-		this.MH=MH;
+		this.webSocketService = webSocketService;
 	}
 
 	/**
@@ -50,7 +33,7 @@ public class TestController {
 	 * */
 	@RequestMapping(value="/sendAll", method=RequestMethod.GET)
 	String sendAllMessage(@RequestParam(required=true) String RequestMessage){
-		mWebSocketService.sendToAll(RequestMessage);
+		webSocketService.sendToAll(RequestMessage);
 		return "ok";
 	}
 

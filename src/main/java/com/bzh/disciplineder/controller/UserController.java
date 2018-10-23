@@ -1,12 +1,11 @@
 package com.bzh.disciplineder.controller;
 
 import com.bzh.disciplineder.model.FriendsInfo;
-import com.bzh.disciplineder.model.User;
 import com.bzh.disciplineder.model.UserInfo;
 import com.bzh.disciplineder.model.request.Friend;
-import com.bzh.disciplineder.model.response.resFriendsInfo;
 import com.bzh.disciplineder.service.UserService;
 import com.bzh.disciplineder.utils.ResultMap;
+import com.bzh.disciplineder.webSocket.WebSocketService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -15,24 +14,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import sun.misc.BASE64Encoder;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.*;
-import java.io.InputStream;
 import java.net.URLEncoder;
-import java.nio.ByteBuffer;
-import java.nio.channels.Channel;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.List;
-import java.util.Random;
-import java.util.zip.GZIPOutputStream;
 
 /**
  * @author 毕泽浩
@@ -145,26 +131,56 @@ public class UserController {
 		List<FriendsInfo> users = userService.selectFriendByUsername(username);
 		return new ResultMap().success().message("查询成功").data(users);
 	}
-    @ApiOperation(value = "上传/修改头像")
+
+	/**
+	 * 上传头像
+	 *
+	 * @param username
+	 * @param headPortrait
+	 * @return
+	 */
+	@ApiOperation(value = "上传/修改头像")
 	@PostMapping("uploadPng")
 	public ResultMap shangchuan(String username, MultipartFile headPortrait) {
-		int as = userService.uploadpicture(username,headPortrait);
-		if(as > 0){
+		int as = userService.uploadpicture(username, headPortrait);
+		if (as > 0) {
 			return new ResultMap().success().message("上传成功").data(true);
-		}else {
+		} else {
 			return new ResultMap().success().message("上传失败").data(false);
 		}
 	}
-    @ApiOperation(value = "获取单个头像")
+
+	/**
+	 * 获取指定用户的头像信息
+	 *
+	 * @param username
+	 * @param response
+	 */
+	@ApiOperation(value = "获取单个头像")
 	@GetMapping("getloadPng")
-   public void getloadPng(String username,HttpServletResponse response){
-	   try {
-		   OutputStream out = response.getOutputStream();
-		   response.setHeader("content-disposition", "attachment;filename="+URLEncoder.encode("","UTF-8"));
-		   String dedao = userService.getloadPng(username);
-		  //out.write(dedao);
-	   } catch (IOException e) {
-		   e.printStackTrace();
-	   }
-   }
+	public void getloadPng(String username, HttpServletResponse response) {
+		try {
+			OutputStream out = response.getOutputStream();
+			response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode("", "UTF-8"));
+			String dedao = userService.getloadPng(username);
+			//out.write(dedao);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@ApiOperation("删除好友")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "username", value = "当前用户", required = true, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "friendName", value = "要删除的好友", required = true, dataType = "String", paramType = "query")
+	})
+	@GetMapping("deleteFriend")
+	public ResultMap deleteFriend(String username, String friendName) {
+		boolean val = userService.deleteFriend(username, friendName);
+		if (val) {
+			return new ResultMap().success().message("删除成功").data(true);
+		} else {
+			return new ResultMap().success().message("删除失败").data(false);
+		}
+	}
 }
