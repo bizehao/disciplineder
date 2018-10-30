@@ -17,7 +17,7 @@
 		where
 			USER_ID = (SELECT ID FROM user WHERE USERNAME = #{username})
 		and
-			FRIEND_ID = (SELECT ID FROM user WHERE USERNAME = #friendName})
+			FRIEND_ID = (SELECT ID FROM user WHERE USERNAME = #{friendName})
 	</delete>
 
 	<select id="getUserByName" resultMap="userinfo">
